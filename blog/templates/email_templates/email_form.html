@@ -1,0 +1,81 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+Share Blog via Email | My Blog
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5"> <!-- Center the content horizontally -->
+  <div class="col-md-6">
+    <section class="share-blog-section">
+        <h2 class="text-center">Share Blog via Email</h2>
+        <form method="post" action="{% url 'send_email' %}">
+            {% csrf_token %}
+            <input type="hidden" name="blog_id" value="{{ blog.id }}">
+            <div class="form-group">
+                <label for="recipient_name">Recipient's Name:</label>
+                <input type="text" id="recipient_name" name="recipient_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="recipient_email">Recipient's Email:</label>
+                <input type="email" id="recipient_email" name="recipient_email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="comments">Comments:</label>
+                <textarea id="comments" name="comments" class="form-control" rows="4" cols="50"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Send Email</button>
+        </form>
+    </section>
+  </div>
+</div>
+{% endblock %}
+
+{% block extracss %}
+<style>
+    /* Custom CSS for the share blog via email page */
+    .share-blog-section {
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .share-blog-section h2 {
+        color: #333;
+    }
+
+    .btn {
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Style for form fields */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        border-radius: 5px;
+    }
+
+    /* Style for form labels */
+    label {
+        font-weight: bold;
+    }
+
+    /* Style for form error messages */
+    .errorlist {
+        color: red;
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="container">
+    <form method="post" class="mt-5 pt-5 mb-5 pb-5" enctype="multipart/form-data" action="{% url 'update_blog' pk=blog.pk %}">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-12">
+                {{ form.media }}
+                <table id="blog-form-table" class="table">
+                    {{ form.as_table }} {# Render form fields as a table #}
+                </table>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Update Blog</button>
+    </form>
+</div>
+
+<style>
+    /* CSS styles */
+    /* Style the form container */
+    .container {
+        /* Add your styles here */
+    }
+
+    /* Style the form */
+    form {
+        /* Add your styles here */
+    }
+
+    /* Style the table */
+    #blog-form-table {
+        /* Add your styles here */
+    }
+
+    /* Style form fields */
+    input[type="text"],
+    textarea,
+    select {
+        /* Add your styles here */
+    }
+
+    /* Style form buttons */
+    .btn {
+        /* Add your styles here */
+    }
+
+    /* Additional styles as needed */
+</style>
+{% endblock %}

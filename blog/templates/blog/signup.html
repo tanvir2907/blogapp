@@ -1,0 +1,17 @@
+
+{% extends 'blog/base.html' %}
+
+{% block title %}
+Signup | My Blog
+{% endblock %}
+
+{% block content %}
+<section class="signup-section">
+    <h2>Signup</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Signup</button>
+    </form>
+</section>
+{% endblock %}

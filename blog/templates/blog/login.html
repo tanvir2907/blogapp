@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+Login | My Blog
+{% endblock %}
+
+{% block content %}
+<style>
+    /* CSS styles */
+    .login-section {
+        margin: 0 auto; /* Center the login section horizontally */
+        width: 50%; /* Set the width of the login section */
+        text-align: center; /* Center the content inside the login section */
+    }
+
+    /* Style the form elements */
+    .login-section form {
+        margin-top: 20px; /* Add space above the form */
+    }
+
+    .login-section h2 {
+        margin-bottom: 20px; /* Add space below the heading */
+    }
+
+    .login-section p {
+        color: red; /* Style error message */
+    }
+
+    .login-section button {
+        margin-top: 20px; /* Add space above the button */
+    }
+</style>
+
+<section class="login-section">
+    <h2>Login</h2>
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+</section>
+{% endblock %}

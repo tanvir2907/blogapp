@@ -1,0 +1,52 @@
+<!-- blog_detail.html -->
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">{{ post.title }}</h1> <!-- Center the title -->
+    <p class="small text-center">Published By: {{ post.user.username }} | Published At: {{ post.created_at }}</p> <!-- Display created_at in lowercase -->
+    <p class="card-text text-center"><strong>Tags:</strong> 
+        {% for tag in post.tags.all %}
+            <span class="badge badge-primary">{{ tag }}</span>
+        {% endfor %}
+    </p>
+    <div class="d-flex justify-content-center mb-4"> <!-- Center the image -->
+        <img src="{{ post.image.url }}" class="img-fluid" style="max-height: 400px;" alt="Blog Image"> <!-- Decrease image size -->
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            <p>{{ post.content | safe }}</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+<!-- Add your CSS styles here -->
+{% block extracss %}
+<style>
+    /* Example CSS styles for the blog_detail template */
+    .card {
+        border: none;
+        transition: transform 0.3s;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .card-text {
+        color: #666;
+    }
+
+    /* Additional style for the small tag */
+    .small {
+        font-size: 14px;
+        color: #666;
+    }
+</style>
+{% endblock extracss %}
