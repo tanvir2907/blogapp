@@ -1,6 +1,9 @@
 # blogapp
 Build a Blog Application
+
+
 done part
+
 
 Design the blog data schema
 Login
@@ -13,4 +16,6 @@ Share the blog through email
 
 
 pending
+
+
 adding comment and like
